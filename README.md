@@ -7,28 +7,45 @@
 | nickname   | string | null: false |
 | email      | string | null: false |
 | password   | string | null: false |
-| name       | string | null: false |
-| name_kana  | string | null: false |
-| birthday   | integer| null: false |
+| first_name | string | null: false |
+| last_name  | string | null: false |
+| f_name_kana| string | null: false |
+| l_name_kana| string | null: false |
+| birthday   | date   | null: false |
 
 ### Association
 
 - has_many :purchases
 - has_many :listings
+- belongs_to :user_item
+
+## users_items テーブル
+
+| Column       | Type      | Options      |
+| ------------ | ----------| ------------ |
+| user_id      | references| null: false  |
+| item_id      | references| null: false  |
 
 ## items テーブル
 
-| Column     | Type               | Options                        |
-| ---------- | ------------------ | ------------------------------ |
-| image      | ActiveStorageで実装 | null: false                    |
-| title      | string             | null: false                    |
-| price      | integer            | null: false                    |
-| soldout_is | boolean            |                                |
+| Column     | Type               | Options      |
+| ---------- | ------------------ | -------------|
+| image      | ActiveStorageで実装 | null: false  |
+| title      | string             | null: false  |
+| price      | integer            | null: false  |
+| description| text               | null: false  |
+| seller     | string             | null: false  |
+| category   | string             | null: false  |
+| state      | string             | null: false  |
+| shipping   | string             | null: false  |
+| area       | string             | null: false  |
+| days       | integer            | null: false  |
+| soldout_is | boolean            | null: false  |
 
 
 ### Association
 
-- belongs_to :listing
+- belongs_to :user_item
 - belongs_to :purchase
 
 ## purchases テーブル
@@ -42,50 +59,20 @@
 ### Association
 
 - has_one :item
-- has_one :credit_card
 - has_one :delivery
-
-## credit_cards テーブル
-
-| Column          | Type    | Options     |
-| --------------- | ------- | ----------- |
-| number          | integer | null: false |
-| expiration_date | integer | null: false |
-| security_code   | integer | null: false |
-
-### Association
-
-- belongs_to :purchase
+- belongs_to :user
 
 ## deliveries テーブル
 
-| Column       | Type    | Options                        |
-| ------------ | --------| ------------------------------ |
-| postal_code  | integer | null: false                    |
-| prefectures  | string  | null: false                    |
-| municipality | string  | null: false                    |
-| address      | string  | null: false                    |
-| building     | string  | null: false                    |
-| phone_number | intger  | null: false                    |
+| Column       | Type    | Options      |
+| ------------ | --------| ------------ |
+| postal_code  | string  | null: false  |
+| prefectures  | string  | null: false  |
+| municipality | string  | null: false  |
+| address      | string  | null: false  |
+| building     | string  |              |
+| phone_number | string  | null: false  |
 
 ### Association
 
 - belongs_to :purchase
-
-## listings テーブル
-
-| Column     | Type   | Options     |
-| ---------- | ------------------ | ------------------------------ |
-| image      | ActiveStorageで実装 | null: false                    |
-| title      | string             | null: false                    |
-| text       | text               | null: false                    |
-| category   | string             | null: false                    |
-| state      | string             | null: false                    |
-| shipping   | string             | null: false                    |
-| area       | string             | null: false                    |
-| days       | integer            | null: false                    |
-
-### Association
-
-- has_one :item
-- belongs_to :user
