@@ -16,45 +16,35 @@
 ### Association
 
 - has_many :purchases
-- has_many :listings
-- belongs_to :user_item
+- has_many :items
 
-## users_items テーブル
-
-| Column       | Type      | Options      |
-| ------------ | ----------| ------------ |
-| user_id      | references| null: false  |
-| item_id      | references| null: false  |
 
 ## items テーブル
 
-| Column     | Type               | Options      |
-| ---------- | ------------------ | -------------|
-| image      | ActiveStorageで実装 | null: false  |
-| title      | string             | null: false  |
-| price      | integer            | null: false  |
-| description| text               | null: false  |
-| seller     | string             | null: false  |
-| category   | string             | null: false  |
-| state      | string             | null: false  |
-| shipping   | string             | null: false  |
-| area       | string             | null: false  |
-| days       | integer            | null: false  |
-| soldout_is | boolean            | null: false  |
-
+| Column      | Type       | Options                        |
+| ----------- | ---------- | -------------------------------|
+| title       | string     | null: false                    |
+| price       | integer    | null: false                    |
+| description | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
+| category_id | integer    | null: false                    |
+| state_id    | integer    | null: false                    |
+| shipping_id | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| days_id     | integer    | null: false                    |
 
 ### Association
 
-- belongs_to :user_item
+- belongs_to :user
 - belongs_to :purchase
 
 ## purchases テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| item_id       | references | null: false, foreign_key: true |
-| credit_card_id| references | null: false, foreign_key: true |
-| delivery_id   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| ---------| ---------- | ------------------------------ |
+| item     | references | null: false, foreign_key: true |
+| delivery | references | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
 
 ### Association
 
