@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   
   validates :password, confirmation: true
-  has_many :prototypes
-  has_many :comments
+  has_many :items
+  has_many :purchases
 end
