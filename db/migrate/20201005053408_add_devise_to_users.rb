@@ -12,6 +12,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
       t.string :f_name_kana,        null: false
       t.string :l_name_kana,        null: false
       t.date :birthday,             null: false
+    
 
       ## Recoverable
       t.string   :reset_password_token
