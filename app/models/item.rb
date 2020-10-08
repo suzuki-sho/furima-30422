@@ -10,9 +10,10 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :title, :price, :description, :user, :category, :state, :shipping, :area, :day, presence: true
-  validates :category_id, :state_id, :shipping_id, :area_id, :day_id, numericality: { other_than: 1 }
-  validates :price, :numericality => { :greater_than_or_equal_to => 300 }
-  validates :price, :numericality => { :less_than => 10000000 }
+  validates :category_id, :state_id, :shipping_id, :day_id, numericality: { other_than: 1 }
+  validates :area_id, numericality: { other_than: 0 }
+  validates :price, numericality: { greater_than_or_equal_to: 300 }
+  validates :price, numericality: { less_than: 10000000 }
   with_options format: {with: /\A[0-9]+\z/} do
     validates :price
   end
