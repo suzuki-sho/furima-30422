@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one_attached :image
 
-  validates :title, :price, :description, :user, :category, :state, :shipping, :area, :day, presence: true
+  validates :title, :price, :description, :user, :category, :state, :shipping, :area, :day, :image, presence: true
   validates :category_id, :state_id, :shipping_id, :day_id, numericality: { other_than: 1 }
   validates :area_id, numericality: { other_than: 0 }
   validates :price, numericality: { greater_than_or_equal_to: 300 }
