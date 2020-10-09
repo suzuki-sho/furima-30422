@@ -3,7 +3,7 @@ function memo() {
   const taxPrice = document.getElementById("add-tax-price");
   const profitPrice = document.getElementById("profit");
 
-  priceInput.addEventListener('input', (e)=> {
+  priceInput.addEventListener('keyup',function(){
     const price_input = priceInput.value;
     const tax_price = Math.floor(price_input * 0.1);
     taxPrice.innerHTML = tax_price
