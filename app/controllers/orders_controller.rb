@@ -6,8 +6,6 @@ class OrdersController < ApplicationController
     @item_order = ItemOrder.new
     if @item.user_id == current_user.id
       redirect_to root_path
-    else
-      
     end
   end
   
