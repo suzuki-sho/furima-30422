@@ -3,8 +3,10 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
+  
   context '商品登録がうまくいくとき' do
     it "FactoryBotで設定したカラムの情報が存在すれば登録できる" do
+      binding.pry
       expect(@item).to be_valid
     end
   end
