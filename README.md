@@ -19,6 +19,7 @@
 - has_many :items
 
 
+
 ## items テーブル
 
 | Column      | Type       | Options                        |
